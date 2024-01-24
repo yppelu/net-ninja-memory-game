@@ -1,0 +1,34 @@
+.card {
+  cursor: pointer;
+
+  position: relative;
+
+  aspect-ratio: 1 / 1;
+}
+
+.card__front,
+.card__back {
+  border-radius: 0.25rem;
+  border: 1px solid #FFFFFF;
+}
+
+.card__front {
+  transition: all 0.2s ease-in-out;
+  transform: rotateY(90deg);
+  position: absolute;
+}
+
+.card__back {
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0.2s;
+}
+
+.flipped .card__front {
+  transition-delay: 0.2s;
+  transform: rotateY(0deg);
+}
+
+.flipped .card__back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}

@@ -1,0 +1,15 @@
+@import "./reset.css";
+@import "./fonts.css";
+
+body {
+  background-color: #1b1523;
+  color: #FFFFFF;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+button {
+  appearance: none;
+  cursor: pointer;
+}
