@@ -73,7 +73,7 @@ function App() {
             isFlipped={selectedCardOne === card || selectedCardTwo === card || card.matched}
           />)}
       </main>
-      <p className="turns">Turn: {turns}</p>
+      <p className="turns">Turns: {turns}</p>
     </>
   );
 }
