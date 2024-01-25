@@ -1,13 +1,12 @@
 .card {
   cursor: pointer;
-
   position: relative;
-
   aspect-ratio: 1 / 1;
 }
 
 .card__front,
 .card__back {
+  background-color: #231931;
   border-radius: 0.25rem;
   border: 1px solid #FFFFFF;
 }
@@ -19,11 +18,12 @@
 }
 
 .card__back {
-  transition: all 0.2s ease-in-out;
-  transition-delay: 0.2s;
+  transition: transform 0.2s ease-in-out 0.2s,
+    box-shadow 0.2s ease-in-out 0s;
 }
 
 .flipped .card__front {
+  cursor: auto;
   transition-delay: 0.2s;
   transform: rotateY(0deg);
 }
@@ -31,4 +31,14 @@
 .flipped .card__back {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+
+@media (hover: hover) {
+  .start-game-button:hover {
+    background-color: #C10069;
+  }
+
+  .card__back:hover {
+    box-shadow: 0 0 1rem #FFFFFF;
+  }
 }

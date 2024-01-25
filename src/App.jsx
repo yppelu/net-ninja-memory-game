@@ -2,16 +2,8 @@ import { useState, useEffect } from 'react';
 
 import '../styles/app.css';
 
+import images from './images';
 import Card from '../components/Card';
-
-const images = [
-  { 'src': '/images/helmet-1.png' },
-  { 'src': '/images/potion-1.png' },
-  { 'src': '/images/ring-1.png' },
-  { 'src': '/images/scroll-1.png' },
-  { 'src': '/images/shield-1.png' },
-  { 'src': '/images/sword-1.png' }
-];
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -39,11 +31,17 @@ function App() {
 
   function shuffle() {
     const cards = [];
-    for (let i = 0; i < images.length; i++) {
-      cards.push({ ...images[i], id: Math.random(), matched: false });
-      cards.push({ ...images[i], id: Math.random(), matched: false });
+    const usedIndexes = [];
+    while (cards.length < 12) {
+      const index = Math.floor(Math.random() * cards.length);
+      if (!usedIndexes.includes(index)) {
+        cards.push({ ...images[index], id: Math.random(), matched: false });
+        cards.push({ ...images[index], id: Math.random(), matched: false });
+        usedIndexes.push(index);
+      }
     }
     cards.sort(() => Math.random() - 0.5);
+
     setSelectedCardOne(null);
     setSelectedCardTwo(null);
     setTurns(0);

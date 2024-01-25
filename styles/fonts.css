@@ -1,16 +1,6 @@
 @font-face {
   font-family: "Josefin Sans";
   src:
-    url("/fonts/JosefinSans-Regular.woff2") format("woff2");
-  font-stretch: normal;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Josefin Sans";
-  src:
     url("/fonts/JosefinSans-SemiBold.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
