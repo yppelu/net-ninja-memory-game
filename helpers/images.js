@@ -13,7 +13,6 @@ const images = [
   { 'src': '/images/Shield.png' },
   { 'src': '/images/Sword.png' },
   { 'src': '/images/SwordWood.png' },
-  { 'src': '/images/SwordWood.png' },
   { 'src': '/images/Tome.png' },
   { 'src': '/images/Wand.png' }
 ];
