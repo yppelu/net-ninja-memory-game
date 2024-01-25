@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import getCards from '../helpers/getCards';
 
 import '../styles/app.css';
 
-import images from './images';
 import Card from '../components/Card';
 
 function App() {
@@ -11,9 +11,7 @@ function App() {
   const [selectedCardTwo, setSelectedCardTwo] = useState(null);
   const [turns, setTurns] = useState(0);
 
-  useEffect(() => {
-    shuffle();
-  }, []);
+  useEffect(startGame, []);
 
   useEffect(() => {
     if (selectedCardOne && selectedCardTwo) {
@@ -29,18 +27,8 @@ function App() {
     }
   }, [selectedCardOne, selectedCardTwo, turns]);
 
-  function shuffle() {
-    const cards = [];
-    const usedIndexes = [];
-    while (cards.length < 12) {
-      const index = Math.floor(Math.random() * cards.length);
-      if (!usedIndexes.includes(index)) {
-        cards.push({ ...images[index], id: Math.random(), matched: false });
-        cards.push({ ...images[index], id: Math.random(), matched: false });
-        usedIndexes.push(index);
-      }
-    }
-    cards.sort(() => Math.random() - 0.5);
+  function startGame() {
+    const cards = getCards();
 
     setSelectedCardOne(null);
     setSelectedCardTwo(null);
@@ -60,7 +48,7 @@ function App() {
     <>
       <header className="header">
         <h1 className="game-title">Magic Match</h1>
-        <button className="start-game-button" onClick={shuffle}>New Game</button>
+        <button className="start-game-button" onClick={startGame}>New Game</button>
       </header>
       <main className="game-field">
         {cards.map(card =>
