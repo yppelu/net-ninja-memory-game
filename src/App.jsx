@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
-import getCards from '../helpers/getCards';
+import getCards from './helpers/getCards';
 
-import '../styles/app.css';
+import './styles/app.css';
 
-import Card from '../components/Card';
+import Card from './components/Card';
 
 function App() {
   const [cards, setCards] = useState([]);
   const [selectedCardOne, setSelectedCardOne] = useState(null);
   const [selectedCardTwo, setSelectedCardTwo] = useState(null);
   const [turns, setTurns] = useState(0);
+  const [difficulty, setDifficulty] = useState('easy');
 
-  useEffect(startGame, []);
+  useEffect(startGame, [difficulty]);
 
   useEffect(() => {
     if (selectedCardOne && selectedCardTwo) {
@@ -28,7 +29,22 @@ function App() {
   }, [selectedCardOne, selectedCardTwo, turns]);
 
   function startGame() {
-    const cards = getCards();
+    let numberOfCards;
+    switch (difficulty) {
+      case 'easy':
+        numberOfCards = 6;
+        break;
+      case 'medium':
+        numberOfCards = 10;
+        break;
+      case 'hard':
+        numberOfCards = 15;
+        break;
+      default:
+        numberOfCards = 6;
+        break;
+    }
+    const cards = getCards(numberOfCards);
 
     setSelectedCardOne(null);
     setSelectedCardTwo(null);
@@ -48,14 +64,35 @@ function App() {
     <>
       <header className="header">
         <h1 className="game-title">Magic Match</h1>
+        <div className="set-difficulty-buttons-container">
+          <button
+            className={`set-difficulty-button ${difficulty === 'easy' ? 'chosen' : ''}`}
+            onClick={() => setDifficulty('easy')}
+          >
+            Easy
+          </button>
+          <button
+            className={`set-difficulty-button ${difficulty === 'medium' ? 'chosen' : ''}`}
+            onClick={() => setDifficulty('medium')}
+          >
+            Medium
+          </button>
+          <button
+            className={`set-difficulty-button ${difficulty === 'hard' ? 'chosen' : ''}`}
+            onClick={() => setDifficulty('hard')}
+          >
+            Hard
+          </button>
+        </div>
         <button className="start-game-button" onClick={startGame}>New Game</button>
       </header>
-      <main className="game-field">
+      <main className={`game-field ${difficulty}`}>
         {cards.map(card =>
           <Card
             key={card.id}
             card={card}
             selectCard={handleSelectCard}
+            difficulty={difficulty}
             isFlipped={selectedCardOne === card || selectedCardTwo === card || card.matched}
           />)}
       </main>
