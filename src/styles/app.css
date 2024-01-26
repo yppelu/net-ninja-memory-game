@@ -32,6 +32,11 @@
   padding: 0.35rem 1rem;
 }
 
+.set-difficulty-button.chosen {
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
 .set-difficulty-buttons-container {
   display: flex;
   gap: 1rem;
@@ -46,11 +51,6 @@
   border: none;
   height: 2rem;
   width: 10ch;
-}
-
-.set-difficulty-button.chosen {
-  border: 1px solid #FFFFFF;
-  color: #FFFFFF;
 }
 
 .start-game-button:active {

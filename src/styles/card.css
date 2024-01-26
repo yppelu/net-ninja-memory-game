@@ -22,6 +22,10 @@
     box-shadow 0.2s ease-in-out 0s;
 }
 
+.flipped {
+  pointer-events: none;
+}
+
 .flipped .card__front {
   cursor: auto;
   transition-delay: 0.2s;
@@ -34,10 +38,6 @@
 }
 
 @media (hover: hover) {
-  .start-game-button:hover {
-    background-color: #C10069;
-  }
-
   .card__back:hover {
     box-shadow: 0 0 1rem #FFFFFF;
   }
