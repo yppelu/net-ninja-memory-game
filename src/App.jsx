@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getCards from './helpers/getCards';
+import getCards from './helpers/getCards.js';
 
 import './styles/app.css';
 
@@ -84,7 +84,20 @@ function App() {
             Hard
           </button>
         </div>
-        <button className="start-game-button" onClick={startGame}>New Game</button>
+        <button
+          className="start-game-button"
+          onClick={
+            () => {
+              const cardOnBoard = document.getElementsByClassName('card');
+              for (let i = 0; i < cardOnBoard.length; i++) {
+                cardOnBoard[i].classList.remove('flipped');
+              }
+              setTimeout(startGame, 400);
+            }
+          }
+        >
+          New Game
+        </button>
       </header>
       <main className={`game-field ${difficulty}`}>
         {cards.map(card =>
